@@ -3,11 +3,13 @@
 include_once('simplehtmldom_1_5/simple_html_dom.php');
 
 if(isset($_GET['url']))
-    $html=$_GET('url');
+    $urlhtml=$_GET['url'];
     else
-    $html = file_get_html('http://fr.flightaware.com/live/flight/AFR454/history/20160206/2220Z/LFPG/SBGR/tracklog/');
+    $urlhtml = 'http://fr.flightaware.com/live/flight/AFR454/history/20160206/2220Z/LFPG/SBGR/tracklog/';
 
-if(strpos($html,"flightaware")<1)die("ne fonctionen que pour les url flightaware");
+if(strpos($urlhtml,"flightaware")<1)
+    die("ne fonctionen que pour les url flightaware");
+$html = file_get_html($urlhtml);
 
 $vol=array();
 $ligne = -1;
