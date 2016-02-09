@@ -62,7 +62,7 @@ $contenucsv="";
 
 //stocke dans u nfichier telechargeable
 $nom_fichier = "vol".time().".csv";
-file_put_contents($nom_fichier,$contenucsv);
-echo "Fichier a charger : <a href=http://flight.caribara.com/$nom_fichier> $nom_fichier</a> ";
+file_put_contents("vols/".$nom_fichier,$contenucsv);
+echo "Fichier a charger : <a href=http://flight.caribara.com/vols/$nom_fichier> $nom_fichier</a> ";
   
 ?>
