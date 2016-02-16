@@ -1,14 +1,16 @@
 <?php
+$debug=0;
 // transforme le journal d'un vol en fichier csv ˆ la norme "de julien" : lat log alt
 include_once('simplehtmldom_1_5/simple_html_dom.php');
 
-if(isset($_GET['url']))
-    $urlhtml=$_GET['url'];
+if(isset($_GET['id']))
+    $urlhtml=$_GET['id'];
     else
-    $urlhtml = 'http://fr.flightaware.com/live/flight/AFR454/history/20160206/2220Z/LFPG/SBGR/tracklog/';
-
+    die('parametre id vide');
+//$urlhtml = 'http://fr.flightaware.com/live/flight/AFR454/history/20160206/2220Z/LFPG/SBGR/tracklog/';
+echo "vol suivi $urlhtml <br>"; 
 if(strpos($urlhtml,"flightaware")<1)
-    die("ne fonctionen que pour les url flightaware");
+    die("ne fonctionne que pour les url flightaware");
 $html = file_get_html($urlhtml);
 
 $vol=array();
@@ -31,6 +33,12 @@ foreach($html->find('tr') as $e)
                     {
                     $ligne =1;
                     $ordre=-4; //echo "<br> \n Debut journal de vol";
+                    }
+                if( strpos($l->innertext,"Taxi Time")>0)
+                    {
+                    $ligne =1;
+                    $ordre=-6;
+                    if($debug)echo "<br> \n Taxi Time";
                     }
             }
     }
