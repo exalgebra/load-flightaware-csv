@@ -1,6 +1,6 @@
 <?php
 $debug=0;
-// transforme le journal d'un vol en fichier csv ˆ la norme "de julien" : lat log alt
+// transforme le journal d'un vol en fichier csv Ë† la norme "de julien" : lat log alt
 include_once('simplehtmldom_1_5/simple_html_dom.php');
 
 if(isset($_GET['id']))
@@ -71,6 +71,6 @@ $contenucsv="";
 //stocke dans u nfichier telechargeable
 $nom_fichier = "vol".time().".csv";
 file_put_contents("vols/".$nom_fichier,$contenucsv);
-echo "Fichier a charger : <a href=http://flight.caribara.com/vols/$nom_fichier> $nom_fichier</a> ";
+echo "Fichier a charger : <a href=/vols/$nom_fichier> $nom_fichier</a> ";
   
 ?>
